@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Carta de un bipolar</title>
+	<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<style type="text/css" media="screen">
+		body {
+			background-color: #E1E1FF;
+		}
+		section p {
+			color:#F900F9;
+			opacity:0;
+		}
+		.jumbotron {
+			background-color:#AAAAFF;
+			/*position:absolute;*/
+			opacity: 0;
+		}
+		button {
+			opacity:0;
+		}
+		footer {
+			text-align:center;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".jumbotron").animate({
+				opacity: "1",
+			/*param2: value2*/},
+			2000, function() {
+				/* stuff to do after animation is complete */
+				$("section p, button").animate({
+					opacity: "1"},
+					3000, function() {
+						/* stuff to do after animation is complete */
+					});
+			});
+			$('button').click(function(event) {
+				$("#minus1").text("Maligna ");
+				$("#zero").text("NO TE IMPORTA");
+				$("#first").text("Hacker malicioso");
+				$("#second").text("delito informático");
+				$("#third").text("robo de información");
+				$("#4th").text("realizo ataques por denegación de servicio");
+				$("#5th").text("espiar");
+				$("#6th").text(", quienes son mi objetivo real, ustedes sólo serán mi medio de entrada");
+				$("#7th").text("penetrado en múltiples sistemas, sin dejar huella y obteniendo información sensible que luego he vendido en la Deep Web.");
+				$("#8th").text("servirme como medio de intrusión a las empresas citadas");
+				$("#9th").text("introducir malware en la red y monitorizar todos los paquetes de datos con Wireshark, con el fin de encontrar información útil gracias al ARP spoofing.");
+				$("#10th").text("se van a arrepentir y mucho MUAHAHAHA!.");
+				$("#11th").text("maliciosos");
+				$("#12th").text("Hacker bipolar.");
+				$("#13th").append(", o tal vez no...");
+				$(".jumbotron").css({
+					backgroundColor: "red",
+					color: "black"
+				});
+				$("body").css({
+					backgroundColor: "black"
+				});
+				$("p").css({
+					color: "red"
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<header>
+				<div class="jumbotron"><h1>Carta <span id="minus1"></span>a MicroDesign</h1></div>
+			</header>
+		</div>
+		<div class="row">
+			<nav></nav>
+		</div>
+		<div class="row">
+			<div class="col-md-1">
+				<aside>
+					<button type="button" class="btn btn-danger">Alterar Ciclotimia</button>
+				</aside>
+			</div>
+			<!--</div>-->
+			<!--<div class="row">-->
+			<div class="col-md-8 col-md-offset-1">
+				<article>
+					<section>
+						<p class="lead">Distinguidos Sres.,</p>
+						<p>Mi nombre es <span id="zero">Hugo Moragues</span>, soy <strong><span id="first">Técnico Superior en ASIR</span></strong> y me dedico al <span id="second">desarrollo de aplicaciones web</span>, principalmente <strong><span id="third">desarrollo Frontend</span> </strong>aunque también <span id="4th">administro servidores UNIX y Microsoft</span>.</p>
+						<p>He tenido el placer de <span id="5th">conocer</span> su empresa a través de las redes sociales, y he comprobado que poseen un <strong>amplio abanico de clientes</strong>, de los cuales destacan <strong>RIU</strong> y <strong>Hotelbeds</strong><span id="6th"></span>. Yo he trabajado como Freelance para varias compañías, entre otros, he <span id="7th">desarrollado motores de reserva, tanto en el back como en el front. He realizado muchas tareas con formularios de reserva, así como validadores de datos y peticiones AJAX a diversos motores</span>.</p>
+						<p>Considero que su empresa puede <strong><span id="8th">ganar mucho con mi experiencia y profesionalidad</span></strong>. Lo primero que quisiera destacar es que allí donde voy soy capaz de <span id="9th">desarrollar soluciones para clientes medianos y grandes, así como implantar metodologías ágiles de desarrollo, como Kanban.</span></p>
+						<p>Sin más dilación, quisiera pedirles que tuvieran en consideración esta carta, para futuras colaboraciones o incorporación en su plantilla de desarrollo, estoy convencido y puedo asegurar que <strong><span id="10th">no se van a arrepentir</span></strong></p>
+						<p class="lead">Saludos <span id="11th">cordiales</span>,<br/><span id="12th">H. Moragues</span></p>
+					</section>
+				</article>
+			</div>
+		</div>
+		<!--</div>-->
+		<div class="row">
+			<footer>
+			<p>Desarrollado en 2016<span id="13th"></span></p>
+			</footer>
+		</div>
+	</div>
+</body>
+</html>

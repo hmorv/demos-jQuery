@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <title>Acordeon</title>
+   <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+
+   <script type="text/javascript">
+      $(document).ready(function($) {
+         $('#acordeon').find('.acordeon-toggle').click(function(){
+
+// Expandir u ocultar el panel actual
+$(this).next().slideToggle('fast');
+
+// Ocultar los otros paneles
+$(".acordeon-contenido").not($(this).next()).slideUp('fast');
+
+});
+      });
+   </script>
+
+   <style>
+      .acordeon-toggle {cursor: pointer;}
+      .acordeon-contenido {display: none;}
+      .acordeon-contenido.default {display: block;}
+   </style>
+</head>
+<body>
+<div id="acordeon">
+      <h4 class="acordeon-toggle">Acordeón 1</h4>
+      <div class="acordeon-contenido default">
+         <p>Cras malesuada ultrices augue molestie risus.</p>
+      </div>
+      <h4 class="acordeon-toggle">Acordeón 2</h4>
+      <div class="acordeon-contenido">
+         <p>Lorem ipsum dolor sit amet mauris eu turpis.</p>
+      </div>
+      <h4 class="acordeon-toggle">Acordeón 3</h4>
+      <div class="acordeon-contenido">
+         <p>Vivamus facilisisnibh scelerisque laoreet.</p>
+      </div>
+   </div>
+</body>
+</html>

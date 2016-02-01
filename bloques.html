@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>Demo Bloques con jQuery</title>
+	<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<style type="text/css" media="screen">
+		body {
+			background-color:orange;
+		}
+		span {
+			font-weight:bolder;
+		}
+		.bloque {
+			position:relative;
+			float:left;
+			width:80px;
+			height:80px;
+			background-color: green;
+			margin: 1em 1em;
+			border:1px solid yellow;	
+			overflow:hidden;
+			text-align:center;
+		}
+		.bloque div {
+			text-align:center;
+			margin:40% auto;
+		}
+		.bloque:hover {
+			-webkit-transition: background-color 1s, border 1s, color 1s, font-weight 1s; /* Safari */
+			transition: background-color 1s, border 1s, color 1s, font-weight 1s;
+			background-color: blue;
+			border:1px solid red;
+			color:red;
+			font-weight: bolder;
+		}
+		footer {
+			
+		}
+		footer p {
+			text-align: center;
+			font-size: 1.2em;
+		}
+	</style>
+
+</style>
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+
+		//	Inicialización de variables
+		//	Capturamos los <span> que muestran info
+		var total 				= $(".contTotal");
+		var eliminados 			= $(".contEliminados");
+		var ultimo 				= $(".contUltimo");
+		
+		//	Inicializamos contadores
+		var blContEliminados 	= 0;
+		var blGenerados			= 0;
+
+		//	Inicializamos mensaje de bloques generados
+		total.html('Bloques generados: '+ blGenerados);
+
+		//	Función para crear bloques dinámicos
+		function crearBloques(n)
+		{
+			//Reiniciamos los contadores
+			blContEliminados = 0;
+			blGenerados = 0;
+			
+			if(n>0)
+			{
+				var bingo = Math.floor((Math.random() * n) + 1);
+				//	Generamos los bloques
+				for(var i = 0; i < n; i++)
+				{
+					if (i == bingo)
+					{
+						var bloque = "<div class='bloque' num='"+(i+1)+"' title='Destrúyeme, soy el "+(i+1)+"' premio='true'><div>"+(i+1)+"</div></div>";
+					}
+					else
+					{
+						var bloque = "<div class='bloque' num='"+(i+1)+"' title='Destrúyeme, soy el "+(i+1)+"'><div>"+(i+1)+"</div></div>";		
+					}	
+					//crear bloque
+					$("#lienzo").append(bloque);
+					//debug
+					console.log(bloque);
+				}
+				//	Actualizamos el contador y mostramos la información
+				blGenerados = n;
+				$('.contTotal').html('Bloques generados: '+blGenerados);
+				//	Reiniciamos a la clase info
+				eliminados.removeClass('bg-warning').removeClass('bg-danger').addClass('bg-info');
+			}
+		}
+
+		//	Si no se ha introducido valor (al cargar la página por ejemplo), asignamos el valor inicial
+		//	¿Qué es this?
+		if($('input').attr('num') == undefined)
+			ultimo.html('Último bloque eliminado: '+0);
+		else
+			ultimo.html('Último bloque eliminado: '+$(this).attr('num'));
+
+		eliminados.html('Bloques eliminados: '+blContEliminados);
+
+		//	Tratamiento al hacer click sobre un bloque:
+		$("button").click(function() {
+			$("#lienzo").empty();
+			var n = $("#num").val();
+			(parseInt(n)>0) ? crearBloques(n) : alert("El valor " +n+ " no es un valor permitido");
+			//if(n>0) crearBloques(n); else alert("El valor " +n+ " no es un valor permitido");
+		});
+		//	Agregamos un manejador de eventos "event handler" al evento click sobre el elemento .bloque
+		$(document).on('click', '.bloque', function() {
+			/* Act on the event */
+			if($(this).attr('premio') == 'true')
+			{
+				alert("Enhorabuena, se ha cargado el bloque secreto.");
+			}
+			$(this).hide('slow');
+			console.log('Bloque eliminado: '+$(this).attr('num'));
+
+			//	Actualizamos la información en pantalla
+			ultimo.html('Último bloque eliminado: '+$(this).attr('num'));
+			eliminados.html('Bloques eliminados: '+(++blContEliminados));
+			
+			//	Tratamiento bloques eliminados
+			var restantes = blGenerados-blContEliminados;
+			//	debug
+			console.log(restantes); 
+			switch(restantes) {
+				case 0:
+				alert("Enhorabuena, se ha cargado "+blGenerados+" bloques.\n ¿Se siente estresado? Pruebe a generar 1000 bloques.");
+				case 1:
+				eliminados.removeClass('bg-info').addClass('bg-warning');
+				break;
+				case 2:
+				case 3:
+				eliminados.removeClass('bg-info').addClass('bg-warning');
+				break;
+				default:
+				eliminados.removeClass('bg-warning').removeClass('bg-danger').addClass('bg-info');
+				break;
+			}
+		});
+		$(document).on('mouseenter', '.bloque', function() {
+			$(this).css({
+				cursor: 'crosshair'
+			});
+		});
+	 });
+</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<header>
+				<div class="col-md-6 col-md-offset-3">
+					<input id="num" class="form-control" type="number"/>
+					<button type="button" class="btn-primary" >Genera bloques</button>
+					<span class="contTotal bg-info"></span>
+					<span class="contUltimo bg-info"></span>
+					<span class="contEliminados bg-info"></span>
+				</div>
+			</header>
+			<div class="row">
+				<div class="col-md-12">
+					<div id="lienzo"></div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<footer>
+					<p class="text-center">Demo creada por un informático con poca vida social</p>	
+				</footer>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
