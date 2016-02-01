@@ -110,7 +110,16 @@
 		$("button").click(function() {
 			$("#lienzo").empty();
 			var n = $("#num").val();
-			(parseInt(n)>0) ? crearBloques(n) : alert("El valor " +n+ " no es un valor permitido");
+			try {
+				if(n=="") throw "Introduce algo, por favor!";
+				if(n<1) throw "Introduce un valor positivo!";
+				crearBloques(n);
+			} catch(e) {
+				alert(e);
+				//	debug!
+				console.log(e);
+			}
+			//(parseInt(n)>0) ? crearBloques(n) : alert("El valor " +n+ " no es un valor permitido");
 			//if(n>0) crearBloques(n); else alert("El valor " +n+ " no es un valor permitido");
 		});
 		//	Agregamos un manejador de eventos "event handler" al evento click sobre el elemento .bloque
@@ -133,7 +142,7 @@
 			console.log(restantes); 
 			switch(restantes) {
 				case 0:
-				alert("Enhorabuena, se ha cargado "+blGenerados+" bloques.\n ¿Se siente estresado? Pruebe a generar 1000 bloques.");
+				alert("Enhorabuena, se ha cargado "+blGenerados+" "+((blGenerados>1) ? "bloques" : "bloque") +".\n ¿Se siente estresado? Pruebe a generar 1000 bloques.");
 				case 1:
 				eliminados.removeClass('bg-info').addClass('bg-warning');
 				break;
