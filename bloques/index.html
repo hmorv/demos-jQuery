@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<!--	viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>Demo Bloques con jQuery</title>
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<!--	Personalizados -->
+	<script type="text/javascript" src="js/scripts.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/df.css"/>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<header>
+			<div class="col-md-12 Titulo text-center">
+					<div class="jumbotron">
+						<h1 class="titulo">Demo con Bloques dinámicos<small> | <span id="palabraVariable">jQuery</span></small></h1>
+					</div>
+				</div>
+				<div class="col-md-12 header">
+					<div class="col-md-3">
+						<div class="form-group">
+							<input id="num" class="form-control" type="number"/>
+						</div>
+						<div class="form-group">
+							<button type="button" class="form-control btn-primary" >Genera bloques</button>
+						</div>
+					</div>
+					<div class="col-md-7 col-md-offset-1 salidaDatos">
+						<span class="contTotal bg-info"></span>
+						<span class="contUltimo bg-info"></span>
+						<span class="contEliminados bg-info"></span>					
+					</div>
+				</div>
+			</header>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div id="lienzo"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<footer>
+					<p class="text-center">Demo creada por un informático con poca vida social</p>	
+				</footer>
+			</div>
+		</div>
+	</div>
+</body>
+</html>	

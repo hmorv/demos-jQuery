@@ -1,0 +1,62 @@
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
+body {
+	background-color:bisque;
+}
+.header {
+	/*background-color: ghostwhite;*/
+}
+span {
+	padding:4px 6px;
+	font-weight:bolder;
+	border-radius: 2px;
+}
+.salidaDatos {
+	float:left;
+	text-align: center;
+	display:block;
+	font-size: 1.2em;
+	padding:1em 1em;
+}
+.titulo {
+	color:maroon!important;
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(117,101,36,1);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(117,101,36,1);
+	box-shadow: 10px 10px 5px 0px rgba(117,101,36,1);
+	font-family: 'Poiret One', cursive;
+}
+.jumbotron {
+	border: 20px outset #8A6D3B;
+	-webkit-box-shadow: inset 10px 10px 80px 0px rgba(117,101,36,1);
+	-moz-box-shadow: inset 10px 10px 80px 0px rgba(117,101,36,1);
+	box-shadow: inset 10px 10px 80px 0px rgba(117,101,36,1);
+}
+.bloque {
+	position:relative;
+	float:left;
+	width:80px;
+	height:80px;
+	background-color: green;
+	margin: 1em 1em;
+	border:3px dashed yellow;	
+	overflow:hidden;
+	text-align:center;
+}
+.bloque div {
+	text-align:center;
+	margin:40% auto;
+}
+.bloque:hover {
+	-webkit-transition: background-color 1s, border 1s, color 1s, font-weight 1s; /* Safari */
+	transition: background-color 1s, border 1s, color 1s, font-weight 1s;
+	background-color: blue;
+	border:3px solid red;
+	color:red;
+	font-weight: bolder;
+}
+footer {
+
+}
+footer p {
+	text-align: center;
+	font-size: 1.2em;
+}
