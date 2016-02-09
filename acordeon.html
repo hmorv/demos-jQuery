@@ -7,15 +7,19 @@
 
    <script type="text/javascript">
       $(document).ready(function($) {
+         /*
+            next: devuelve el hermano inmediato siguiente de cada elemento de la selección
+            find: busca los elementos descendientes a la selección indicada
+            slideToggle: desplaza hacia abajo un elemento en estado "up" y hacia arriba un elemento en estado "down".
+         */
          $('#acordeon').find('.acordeon-toggle').click(function(){
 
-// Expandir u ocultar el panel actual
-$(this).next().slideToggle('fast');
+         // Expandir u ocultar el panel actual
+         $(this).next().slideToggle('fast');
 
-// Ocultar los otros paneles
-$(".acordeon-contenido").not($(this).next()).slideUp('fast');
-
-});
+         // Ocultar los otros paneles
+         $(".acordeon-contenido").not($(this).next()).slideUp('fast');
+      });
       });
    </script>
 
@@ -26,7 +30,7 @@ $(".acordeon-contenido").not($(this).next()).slideUp('fast');
    </style>
 </head>
 <body>
-<div id="acordeon">
+   <div id="acordeon">
       <h4 class="acordeon-toggle">Acordeón 1</h4>
       <div class="acordeon-contenido default">
          <p>Cras malesuada ultrices augue molestie risus.</p>
